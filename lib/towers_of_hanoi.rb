@@ -51,14 +51,7 @@ class TowersOfHanoi
     @towers
   end
 
-  def play
-    #loop to ask for input
-  end
-
-  def render
-
-  end
-
+  #game functions
   def won?
     @towers[1].size == 3 || @towers[2].size == 3
   end
@@ -72,9 +65,35 @@ class TowersOfHanoi
     end
   end
 
-
   def move(from_tower, to_tower)
     @towers[to_tower].push(@towers[from_tower].pop)
   end
 
+  #game execution
+  def play
+    until won?
+      render
+      print "From which tower: "
+      from_tower = gets.to_i - 1
+      print "To which tower: "
+      to_tower = gets.to_i - 1
+      print "----------------------\n"
+      if valid_move?(from_tower,to_tower)
+        move(from_tower,to_tower)
+      else
+        puts "invalid move"
+      end
+    end
+    puts "Congrats! You won!"
+  end
+
+  def render
+    puts "Tower 1 has #{@towers[0]}"
+    puts "Tower 2 has #{@towers[1]}"
+    puts "Tower 3 has #{@towers[2]}"
+  end
+
 end
+
+game = TowersOfHanoi.new
+game.play
