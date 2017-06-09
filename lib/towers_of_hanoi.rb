@@ -41,4 +41,40 @@
 
 class TowersOfHanoi
 
+  attr_reader :towers
+
+  def initialize
+    @towers = [[3,2,1],[],[]]
+  end
+
+  def towers
+    @towers
+  end
+
+  def play
+    #loop to ask for input
+  end
+
+  def render
+
+  end
+
+  def won?
+    @towers[1].size == 3 || @towers[2].size == 3
+  end
+
+  def valid_move?(from_tower, to_tower)
+    return false if @towers[from_tower].empty?
+    if !@towers[to_tower].empty? && @towers[from_tower].last > @towers[to_tower].last
+      return false
+    else
+      true
+    end
+  end
+
+
+  def move(from_tower, to_tower)
+    @towers[to_tower].push(@towers[from_tower].pop)
+  end
+
 end
