@@ -95,5 +95,6 @@ class TowersOfHanoi
 
 end
 
-game = TowersOfHanoi.new
-game.play
+if  $PROGRAM_NAME == __FILE__
+  TowersOfHanoi.new.play
+end
